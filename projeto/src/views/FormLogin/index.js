@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, TouchableOpacity, ImageBackground } from 'react-native'
 import { connect } from 'react-redux'
 import { modificaEmail, modificaPassword } from '../../store/usuario/actions'
-import { login } from '../../store/auth/actions'
+import { login, setToken } from '../../store/auth/actions'
 import { Button } from 'react-native-elements'
 import { TextField } from '../../components'
 import { Actions } from 'react-native-router-flux'
@@ -32,7 +32,7 @@ function FormLogin(props) {
         const user = resp.data.user
         if (token && user) {
             props.login(user)
-            await AsyncStorage.setItem('token', token)
+            props.setToken(token)
         }
 
     }
@@ -61,11 +61,10 @@ function FormLogin(props) {
 }
 
 const mapStateToProps = ({ usuario }) => {
-
     return {
         email: usuario.email,
-        password: usuario.password
+        password: usuario.password,
     }
 }
 
-export default connect(mapStateToProps, { modificaEmail, modificaPassword, login })(FormLogin)
+export default connect(mapStateToProps, { modificaEmail, modificaPassword, login, setToken })(FormLogin)

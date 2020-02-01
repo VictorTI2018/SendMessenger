@@ -1,9 +1,17 @@
-import { IS_LOGGED, IS_LOGOUT } from './types'
+import { IS_LOGGED, IS_LOGOUT, IS_TOKEN } from './types'
 
 export const login = user => {
     return dispatch => ({
         type: IS_LOGGED,
         payload: user
+    })
+}
+
+export const setToken = token => {
+
+    return dispatch => ({
+        type: IS_TOKEN,
+        payload: token
     })
 }
 

@@ -1,12 +1,16 @@
 import axios from 'axios'
-import AsyncStorage from '@react-native-community/async-storage'
+import storeConfig from '../store/index'
+
+
+const store = storeConfig()
 
 const http = axios.create({
     baseURL: 'http://192.168.42.51:8000'
 })
 
 http.interceptors.request.use((config) => {
-    const token = AsyncStorage.getItem('token')
+    const { auth } = store.getState()
+    const { token } = auth
     if(token) {
         config.headers['Authorization'] = `Bearer ${token}`
     }
