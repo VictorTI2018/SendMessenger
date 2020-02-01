@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
-import { View, Text, StatusBar } from 'react-native'
+import {  StatusBar } from 'react-native'
 import { Provider } from 'react-redux'
+import FlashMessage from 'react-native-flash-message'
 import Navigation from './navigation/index'
 import firebase from 'firebase'
 
@@ -22,9 +23,8 @@ export default function App(props) {
             measurementId: "G-6RMZ19EGEP"
         };
         // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
         if (!firebase.apps.length) {
-            firebase.initializeApp(config);
+            firebase.initializeApp(firebaseConfig);
         }
     }
 
@@ -36,6 +36,7 @@ export default function App(props) {
         <Provider store={store}>
             <StatusBar backgroundColor="#222" barStyle="light-content" />
             <Navigation />
+            <FlashMessage position="bottom" />
         </Provider>
     )
 }

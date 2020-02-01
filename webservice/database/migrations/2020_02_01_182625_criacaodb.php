@@ -24,6 +24,7 @@ class Criacaodb extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('tb_contatos');
         Schema::dropIfExists('tb_usuarios');
     }
 }

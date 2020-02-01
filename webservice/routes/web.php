@@ -17,6 +17,12 @@ $router->get('/', function () use ($router) {
 
 $router->group(["prefix" => "api"], function() use ($router) {
     $router->post('/auth', 'LoginController@login');
-
     $router->post('/register', 'UsuarioController@create');
+
+    $router->group(["middleware" => "auth:api"], function() use ($router) {
+        $router->group(["prefix" => "contato"], function() use ($router) {
+            $router->get('/contatos/{id}', 'ContatoController@index');
+            $router->post('/register', 'ContatoController@create');
+        });
+    });
 });

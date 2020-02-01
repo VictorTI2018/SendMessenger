@@ -50,14 +50,13 @@ class LoginController extends Controller
                 if ($token) {
                     return $this->responseToken($user, $token);
                 } else {
-                    throw new Exception("Credencias inválidas");
+                    return response()->json(["status" => false, "message" => "Credencias inválidas"]);
                 }
             } else {
-                throw new Exception("Senha inválida");
+                return response()->json(["status" => false, "message" => "Senha inválida"]);
             }
         } else {
-            throw new Exception("Email inválido");
+            return response()->json(["status" => false, "message" => "E-mail inválido"]);
         }
-
     }
 }

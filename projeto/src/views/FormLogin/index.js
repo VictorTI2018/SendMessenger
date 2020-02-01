@@ -17,7 +17,6 @@ function FormLogin(props) {
     function cadastrar() {
         Actions.push('cadastro')
     }
-    console.log(props)
 
     function getModel() {
         return {

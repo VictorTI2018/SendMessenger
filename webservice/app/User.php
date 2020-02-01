@@ -43,4 +43,9 @@ class User extends Model implements JWTSubject, AuthenticatableContract, Authori
     {
         return $this->getKey();
     }
+
+    public function contatos()
+    {
+        return $this->belongsToMany(User::class, 'tb_contatos', 'id_usuario', 'contato_id');
+    }
 }

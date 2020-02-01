@@ -7,3 +7,12 @@ CREATE TABLE tb_usuarios(
     updated_at timestamp default current_timestamp,
     PRIMARY KEY(id_usuario)
 );
+
+CREATE TABLE tb_contatos(
+    id_usuario INT NOT NULL,
+    contato_id INT NOT NULL,
+    created_at timestamp default current_timestamp,
+    updated_at timestamp default current_timestamp,
+    FOREIGN KEY(id_usuario) REFERENCES tb_usuarios(id_usuario),
+    FOREIGN KEY (contato_id) REFERENCES tb_usuarios(id_usuario)
+);
