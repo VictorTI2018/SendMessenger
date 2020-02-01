@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, ImageBackground } from 'react-native'
 import { connect } from 'react-redux'
-import { modificaEmail, modificaPassword, modificaUsername } from '../../store/auth/actions'
+import { modificaEmail, modificaPassword, modificaUsername } from '../../store/usuario/actions'
 import { Button, Card } from 'react-native-elements'
 import { TextField } from '../../components'
 
@@ -47,7 +47,7 @@ function FormCadastro(props) {
     )
 }
 
-const mapStateToProps = ({ auth }) => {
+const mapStateToProps = ({ usuario }) => {
     return {
         username: auth.username,
         email: auth.email,

@@ -1,36 +1,19 @@
-import { MODIFICA_PASSWORD, MODIFICA_EMAIL, MODIFICA_USERNAME, IS_LOGGED } from './types'
+import {  IS_LOGOUT, IS_LOGGED } from './types'
+
 const initialState = {
-    username: null,
-    email: null,
-    password: null,
     user: {}
 }
 
-const reducer = (state = initialState, action) => {
-    switch (action.type) {
-        case MODIFICA_USERNAME:
-            return {
-                ...state,
-                username: action.payload
-            }
-        case MODIFICA_EMAIL:
-            return {
-                ...state,
-                email: action.payload
-            }
-
-        case MODIFICA_PASSWORD:
-            return {
-                ...state,
-                password: action.payload
-            }
+const reducer = (state = initialState, action)  => {
+    switch(action.type) {
         case IS_LOGGED:
-            return action.payload
+            return  action.payload
 
+        case IS_LOGOUT:
+            return {
+                ...initialState
+            }
         default:
             return state
     }
-
 }
-
-export default reducer

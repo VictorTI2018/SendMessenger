@@ -1,7 +1,8 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, ImageBackground } from 'react-native'
 import { connect } from 'react-redux'
-import { modificaEmail, modificaPassword, login } from '../../store/auth/actions'
+import { modificaEmail, modificaPassword } from '../../store/usuario/actions'
+import { login } from '../../store/auth/actions'
 import { Button } from 'react-native-elements'
 import { TextField } from '../../components'
 import { Actions } from 'react-native-router-flux'
@@ -59,11 +60,11 @@ function FormLogin(props) {
     )
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ usuario }) => {
 
     return {
-        email: state.auth.email,
-        password: state.auth.password
+        email: usuario.email,
+        password: usuario.password
     }
 }
 
