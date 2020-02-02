@@ -55,7 +55,7 @@ function Usuarios(props) {
     function setAdicionado(id_contato, contato_id) {
         if(id_contato === contato_id) {
             return (
-                <Button title="Desfazer Amizade" onPress={() => handleSubmit(contato_id)} buttonStyle="#BDBDBD" />
+                <Button title="Desfazer Amizade" onPress={() => handleSubmit(contato_id)} buttonStyle={{ backgroundColor: "#BDBDBD" }} />
             )
         } else {
             return (
