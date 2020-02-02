@@ -22,6 +22,7 @@ function Usuarios(props) {
 
     const [usuarios, setUsuarios] = useState([])
     const [loading, setLoading] = useState(false)
+    const [ id_contato, setIdContato ] = useState(0)
 
     async function loadUsuarios() {
         try {
@@ -30,6 +31,36 @@ function Usuarios(props) {
             setUsuarios(resp.data)
         } finally {
             setLoading(false)
+        }
+    }
+
+    async function handleSubmit (contato_id) {
+        let model = {
+            id_usuario: user.id_usuario,
+            contato_id
+        }
+        try {
+            const resp = await addContatos(model)
+            console.log(resp.data)
+            if(resp.data.status) {
+                setIdContato(resp.data.id_contato)
+            } else if(resp.data.status === false) {
+                setIdContato(0)
+            }
+        }finally {
+
+        }
+    }
+
+    function setAdicionado(id_contato, contato_id) {
+        if(id_contato === contato_id) {
+            return (
+                <Button title="Desfazer Amizade" onPress={() => handleSubmit(contato_id)} buttonStyle="#BDBDBD" />
+            )
+        } else {
+            return (
+                <Button title="Adicionar" onPress={() => handleSubmit(contato_id)}  />
+            )
         }
     }
 
@@ -60,7 +91,7 @@ function Usuarios(props) {
                     <Image source={require("../../assets/img/pessoa.jpeg")} style={{ height: 150, width: 150, borderRadius: 10 }} />
                     <Text style={{ marginTop: 10, fontSize: 20 }}>{item.username}</Text>
                 </View>
-                <Button title="Adicionar" onPress={() => false} />
+               {setAdicionado(id_contato, item.id_usuario)}
             </View>
         );
     }
