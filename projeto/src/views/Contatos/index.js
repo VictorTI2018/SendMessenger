@@ -1,7 +1,8 @@
 import React from 'react'
 import { View, Text } from 'react-native'
+import { connect } from 'react-redux'
 
-export default function Contatos(props) {
+function Contatos(props) {
 
     return (
         <View>
@@ -9,3 +10,11 @@ export default function Contatos(props) {
         </View>
     )
 }
+
+const mapStateToProps = ({ auth }) => {
+    return {
+        user: auth
+    }
+}
+
+export default connect(mapStateToProps, null)(Contatos)
