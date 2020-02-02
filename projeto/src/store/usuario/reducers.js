@@ -1,4 +1,4 @@
-import { MODIFICA_PASSWORD, MODIFICA_EMAIL, MODIFICA_USERNAME, IS_LOGGED, CLEAR_DATA } from './types'
+import { MODIFICA_PASSWORD, MODIFICA_EMAIL, MODIFICA_USERNAME, CLEAR_DATA } from './types'
 const initialState = {
     username: null,
     email: null,
@@ -23,6 +23,10 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 password: action.payload
+            }
+        case CLEAR_DATA:
+            return {
+                ...initialState
             }
 
         default:

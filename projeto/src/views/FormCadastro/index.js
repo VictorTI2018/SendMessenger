@@ -2,7 +2,7 @@ import React from 'react'
 import { View, ImageBackground } from 'react-native'
 import { connect } from 'react-redux'
 import { Actions } from 'react-native-router-flux'
-import { modificaEmail, modificaPassword, modificaUsername } from '../../store/usuario/actions'
+import { modificaEmail, modificaPassword, modificaUsername, clearData } from '../../store/usuario/actions'
 import { Button, Card } from 'react-native-elements'
 import { TextField } from '../../components'
 import { showMessage } from 'react-native-flash-message'
@@ -32,6 +32,7 @@ function FormCadastro(props) {
                 duration: 1500
             })
         } else {
+            props.clearData()
             Actions.push('boasVindas')
         }
     }
@@ -67,4 +68,4 @@ const mapStateToProps = ({ usuario }) => {
     }
 }
 
-export default connect(mapStateToProps, { modificaUsername, modificaEmail, modificaPassword })(FormCadastro)
+export default connect(mapStateToProps, { modificaUsername, modificaEmail, modificaPassword, clearData })(FormCadastro)

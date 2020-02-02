@@ -25,7 +25,6 @@ export const modificaUsername = username => {
 
 export const clearData = model => {
     return {
-        type: CLEAR_DATA,
-        payload: model
+        type: CLEAR_DATA
     }
 }
