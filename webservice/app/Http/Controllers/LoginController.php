@@ -38,7 +38,7 @@ class LoginController extends Controller
 
     public function responseToken(User $user, string $token)
     {
-        return response()->json(["user" => $user, "token" => $token]);
+        return response()->json(["user" => $user, "amigos" => $user->contatos()->count(), "token" => $token]);
     }
 
     public function login(Request $request)

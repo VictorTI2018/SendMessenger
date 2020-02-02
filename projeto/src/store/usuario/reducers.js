@@ -2,8 +2,7 @@ import { MODIFICA_PASSWORD, MODIFICA_EMAIL, MODIFICA_USERNAME, CLEAR_DATA } from
 const initialState = {
     username: null,
     email: null,
-    password: null,
-    user: {}
+    password: null
 }
 
 const reducer = (state = initialState, action) => {

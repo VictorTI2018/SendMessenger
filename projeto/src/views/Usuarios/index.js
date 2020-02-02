@@ -19,6 +19,7 @@ import styles from './styles'
 function Usuarios(props) {
 
     const { user } = props.user
+    console.log(user)
 
     const [usuarios, setUsuarios] = useState([])
     const [loading, setLoading] = useState(false)
@@ -41,7 +42,6 @@ function Usuarios(props) {
         }
         try {
             const resp = await addContatos(model)
-            console.log(resp.data)
             if(resp.data.status) {
                 setIdContato(resp.data.id_contato)
             } else if(resp.data.status === false) {
@@ -98,7 +98,6 @@ function Usuarios(props) {
 
     return (
         <ScrollView style={styles.container}>
-
             {renderTitle()}
             <Text style={styles.title}>Aqui Estão algumas sugestão de amizade</Text>
             <View >

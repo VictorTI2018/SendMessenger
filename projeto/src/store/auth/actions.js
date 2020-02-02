@@ -13,3 +13,4 @@ export const logout = () => {
         type: IS_LOGOUT
     }
 }
+

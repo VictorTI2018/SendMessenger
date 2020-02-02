@@ -2,8 +2,8 @@ import React from 'react'
 import { View, Text, TouchableOpacity, ImageBackground } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import { connect } from 'react-redux'
-import { modificaEmail, modificaPassword, clearData } from '../../store/usuario/actions'
-import { login, setToken } from '../../store/auth/actions'
+import { modificaEmail, modificaPassword } from '../../store/usuario/actions'
+import { login, setTotalAmigos } from '../../store/auth/actions'
 import { Button } from 'react-native-elements'
 import { TextField } from '../../components'
 import { Actions } from 'react-native-router-flux'
@@ -24,6 +24,7 @@ function FormLogin(props) {
             password: props.password
         }
     }
+    console.log(props)
 
     async function handleSubmit() {
         const resp = await logar(getModel())
@@ -66,4 +67,4 @@ const mapStateToProps = ({ usuario }) => {
     }
 }
 
-export default connect(mapStateToProps, { modificaEmail, modificaPassword, login, setToken, clearData })(FormLogin)
+export default connect(mapStateToProps, { modificaEmail, modificaPassword, login, setTotalAmigos })(FormLogin)
