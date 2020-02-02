@@ -20,6 +20,11 @@ $router->group(["prefix" => "api"], function() use ($router) {
     $router->post('/register', 'UsuarioController@create');
 
     $router->group(["middleware" => "auth:api"], function() use ($router) {
+
+        $router->group(["prefix" => "usuarios"], function() use ($router) {
+            $router->get('/usuarios', 'UsuarioController@index');
+        });
+
         $router->group(["prefix" => "contato"], function() use ($router) {
             $router->get('/contatos/{id}', 'ContatoController@index');
             $router->post('/register', 'ContatoController@create');

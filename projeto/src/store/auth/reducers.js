@@ -1,22 +1,25 @@
-import {  IS_LOGOUT, IS_LOGGED, IS_TOKEN } from './types'
+import { IS_LOGOUT, IS_LOGGED, IS_TOKEN } from './types'
 
 const initialState = {
-    user: {},
-    token: null
+    user: {
+        id_usuario: null,
+        username: null,
+        email: null,
+        password: null
+    }
 }
 
-const reducer = (state = initialState, action)  => {
-    switch(action.type) {
+const reducer = (state = initialState, action) => {
+    switch (action.type) {
         case IS_LOGGED:
             return {
                 ...state,
-                user: action.payload
-            }
-
-        case IS_TOKEN:
-            return {
-                ...state,
-                token: action.payload
+                user: {
+                    id_usuario: action.payload.id_usuario,
+                    username: action.payload.username,
+                    email: action.payload.email,
+                    password: action.payload.password
+                }
             }
 
         case IS_LOGOUT:

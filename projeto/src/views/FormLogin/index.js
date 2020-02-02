@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, ImageBackground } from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage'
 import { connect } from 'react-redux'
 import { modificaEmail, modificaPassword, clearData } from '../../store/usuario/actions'
 import { login, setToken } from '../../store/auth/actions'
@@ -29,9 +30,8 @@ function FormLogin(props) {
         const token = resp.data.token
         const user = resp.data.user
         if (token && user) {
-            props.login(user)
-            props.setToken(token)
-            props.clearData()
+            props.login(resp.data)
+            await AsyncStorage.setItem('token', token)
             Actions.push('home')
         }
 

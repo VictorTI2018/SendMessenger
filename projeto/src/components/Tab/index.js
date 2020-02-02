@@ -23,9 +23,9 @@ export function Tab(props) {
     );
 
     const ThirdRoute = () => (
-        <View style={styles.scene} >
+        <ImageBackground style={styles.scene} source={require("../../assets/img/img.jpg")}>
             <Conversas {...props} />
-        </View>
+        </ImageBackground>
     );
 
 

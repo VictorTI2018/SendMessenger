@@ -25,14 +25,6 @@ class User extends Model implements JWTSubject, AuthenticatableContract, Authori
         'username', 'email', 'password'
     ];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-    ];
 
     public function getJWTCustomClaims()
     {
